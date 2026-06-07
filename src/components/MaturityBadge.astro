@@ -1,0 +1,21 @@
+---
+interface Props {
+  maturity: 'seedling' | 'growing' | 'evergreen';
+  size?: 'sm' | 'md';
+}
+
+const { maturity, size = 'sm' } = Astro.props;
+
+const meta = {
+  seedling: { glyph: '✦', label: 'seedling', tone: 'text-emerald-300/80' },
+  growing: { glyph: '✦✦', label: 'growing', tone: 'text-amber-300/80' },
+  evergreen: { glyph: '✦✦✦', label: 'evergreen', tone: 'text-sky-300/80' },
+} as const;
+
+const m = meta[maturity];
+const sizing = size === 'sm' ? 'text-[10.5px]' : 'text-xs';
+---
+<span class={`inline-flex items-center gap-1.5 uppercase tracking-[0.16em] font-medium ${sizing} ${m.tone}`} title={`${m.label} note`}>
+  <span aria-hidden="true" class="leading-none translate-y-[0.5px]">{m.glyph}</span>
+  <span>{m.label}</span>
+</span>

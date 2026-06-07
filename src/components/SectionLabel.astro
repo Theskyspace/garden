@@ -1,0 +1,25 @@
+---
+interface Props {
+  id?: string;
+  href?: string;
+  count?: number;
+}
+const { id, href, count } = Astro.props;
+---
+<div class="mb-8 flex items-baseline justify-between">
+  <h2
+    id={id}
+    class="text-xs font-medium uppercase tracking-[0.18em] text-neutral-500"
+  >
+    <slot />
+    {count !== undefined && <span class="ml-2 text-neutral-700 tabular-nums">[{count}]</span>}
+  </h2>
+  {href && (
+    <a
+      href={href}
+      class="text-xs uppercase tracking-[0.18em] text-neutral-500 hover:text-neutral-200 transition-colors"
+    >
+      all →
+    </a>
+  )}
+</div>

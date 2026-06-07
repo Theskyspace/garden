@@ -1,0 +1,174 @@
+---
+import Base from '../layouts/Base.astro';
+
+const experience = [
+  {
+    company: 'Equal Identity',
+    sub: 'Software Engineer · RBI Account Aggregator framework · Hyderabad',
+    period: 'Dec 2024 — Present',
+    bullets: [
+      'Built Nexus — the platform\'s first multi-tenant queue-based notification router; eliminated cascading notification drops and the transaction-failure incidents they caused.',
+      'Shipped the team\'s first production Go service: a workflow engine for bulk record processing. Critical-path; projected INR 200–300M revenue at 10–15% market penetration.',
+      'Built Multi-CR Support and executed a live TSP migration end-to-end for a major brokerage — zero rollbacks, INR 48M+ ARR realised and counting; migration rails reusable for future enterprise switches.',
+      'Designed Customer Protect: cut consent-failure rates >20% across 5+ enterprise clients; adopted as mandatory across the platform.',
+      'Self-initiated full-stack Internal Dashboard now used daily by the team; reduced support resolution from hours of engineering back-and-forth to minutes of self-service.',
+      'Built API-level Real-time Metrics from zero — now the baseline view during incidents and capacity discussions.',
+      'Authored auditable FI Data Purge crons under AA framework retention policy — ~3 TB of storage saved, demonstrable compliance.',
+      'Currently building an internal agent-evaluation platform (scenarios, persona replay, LLM-judge tuning) to support deterministic rollout of an AI call-assistant product.',
+      'Two Monthly Demo Awards (Bulk Pipeline Testing Framework, DFM/TSP Router); supported 15+ enterprise clients across production + UAT.',
+    ],
+  },
+  {
+    company: 'Yelow Autofin (Yelow Payments Pvt Ltd)',
+    sub: 'Founding Engineer · Lending fintech · Remote',
+    period: 'May 2024 — Nov 2024',
+    bullets: [
+      'Designed the flagship lending gateway as a 3-API BFF surface — modular workflows, frontend-friendly contracts.',
+      'Engineered a Django + Gorules (Rust) business rule engine for ROI, loan amounts and underwriting parameters — INR 20M disbursed in the first 10 days post-launch.',
+      'Shipped an internal CLI that cut feature delivery time by 45%.',
+      'Automated sanction-letter and loan-agreement pipelines end-to-end.',
+    ],
+  },
+  {
+    company: 'Wealides Fintech (SayF)',
+    sub: 'Founding Engineer · Cashback / digital-gold consumer app · Titan Capital-backed · Remote',
+    period: 'Oct 2021 — May 2024',
+    bullets: [
+      'Built the backend API infrastructure from scratch — Django + NestJS — supporting both the B2C consumer app and B2B brand-partner integrations (200+ partners).',
+      'Scaled to 120K users and INR 1B+ in transaction value on AWS (ECS, S3, RDS, PostgreSQL); high availability, optimal performance, data integrity.',
+      'Implemented CI/CD on Jenkins + Docker + Makefiles — automated build, test and deploy pipelines for faster, more reliable releases.',
+      'Programmatic automation for design & marketing — 90% reduction in manual intervention.',
+    ],
+  },
+];
+
+const projects = [
+  {
+    name: 'CurioQuest — AI Q&A with real-time contextual search',
+    detail: 'RAG-style platform combining Bing Search for live context with Cohere AI for source-cited responses. Next.js front-end with focus on minimalist UI and dynamic interactions.',
+    href: 'https://github.com/Theskyspace/curioquest.ai',
+  },
+  {
+    name: 'NDA NA abhyas — Android exam-prep app',
+    detail: 'Built and shipped to Play Store in 14 days, starting from zero Android Studio knowledge. Self-imposed deadline; personal-mission proof point.',
+    href: '#',
+  },
+];
+
+const skills = [
+  { label: 'Languages', items: 'Go · TypeScript · Python · SQL · Dart · C++' },
+  { label: 'Frameworks', items: 'Django · NestJS · Flutter · Next.js · Flask' },
+  { label: 'Infra', items: 'AWS (ECS, S3, RDS, Athena) · Docker · Jenkins · GitHub Actions · Makefiles' },
+  { label: 'Data', items: 'PostgreSQL · Redis · message queues' },
+  { label: 'Domain', items: 'RBI Account Aggregator framework · BFF architecture · rules engines · multi-tenant systems · observability' },
+];
+
+const awards = [
+  'Smart India Hackathon 2022 — Winner (DRDO problem statement; felicitated by the Vice President of India).',
+  'UNESCO–India–Africa Hackathon 2022 — Winner.',
+  'Free Your Data Hackathon 2021 — Finalist.',
+];
+---
+
+<Base title="Akash Joshi — Resume">
+  <header class="mb-12">
+    <div class="flex flex-wrap items-start justify-between gap-4">
+      <div>
+        <h1 class="text-2xl font-medium tracking-tight text-neutral-100">Akash Joshi</h1>
+        <p class="mt-1 text-neutral-400">Founding engineer · fintech infrastructure · AI products</p>
+        <p class="mt-3 text-sm text-neutral-500">India · open to remote</p>
+        <p class="mt-3 text-sm text-neutral-400">
+          Best way to reach me:
+          <a href="https://linkedin.com/in/theskyspace" class="text-neutral-100 underline decoration-neutral-700 hover:decoration-neutral-100 transition">LinkedIn</a>
+          <span class="mx-1 text-neutral-600">·</span>
+          <a href="mailto:theskyspacedev@gmail.com" class="underline decoration-neutral-700 hover:decoration-neutral-100 transition">theskyspacedev@gmail.com</a>
+          <span class="mx-1 text-neutral-600">·</span>
+          <a href="https://github.com/theskyspace" class="underline decoration-neutral-700 hover:decoration-neutral-100 transition">github</a>
+        </p>
+      </div>
+      <a
+        href="/akash-resume.pdf"
+        class="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-neutral-900 bg-neutral-100 hover:bg-white transition-colors rounded-md whitespace-nowrap"
+        download
+      >
+        Download PDF
+        <span aria-hidden="true">↓</span>
+      </a>
+    </div>
+  </header>
+
+  <section class="mb-12">
+    <h2 class="mb-4 text-xs font-medium uppercase tracking-[0.18em] text-neutral-500">Skills</h2>
+    <dl class="space-y-1.5">
+      {skills.map((s) => (
+        <div class="flex flex-wrap gap-x-3">
+          <dt class="text-neutral-500 text-sm w-28 shrink-0">{s.label}</dt>
+          <dd class="text-neutral-200 text-sm">{s.items}</dd>
+        </div>
+      ))}
+    </dl>
+  </section>
+
+  <section class="mb-12">
+    <h2 class="mb-6 text-xs font-medium uppercase tracking-[0.18em] text-neutral-500">Experience</h2>
+    <ol class="space-y-10">
+      {experience.map((r) => (
+        <li>
+          <div class="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
+            <div>
+              <h3 class="text-base font-medium text-neutral-100">{r.company}</h3>
+              <p class="text-sm text-neutral-500">{r.sub}</p>
+            </div>
+            <p class="text-sm tabular-nums text-neutral-500 whitespace-nowrap">{r.period}</p>
+          </div>
+          <ul class="mt-3 space-y-1.5 text-neutral-300 text-[14.5px]">
+            {r.bullets.map((b) => (
+              <li class="relative pl-5 before:absolute before:left-0 before:top-[0.65em] before:h-px before:w-3 before:bg-neutral-700">
+                {b}
+              </li>
+            ))}
+          </ul>
+        </li>
+      ))}
+    </ol>
+  </section>
+
+  <section class="mb-12">
+    <h2 class="mb-6 text-xs font-medium uppercase tracking-[0.18em] text-neutral-500">Projects</h2>
+    <ul class="space-y-5">
+      {projects.map((p) => (
+        <li>
+          <div class="flex items-baseline justify-between gap-4">
+            <h3 class="text-base font-medium text-neutral-100">{p.name}</h3>
+            <a href={p.href} class="text-sm text-neutral-500 hover:text-neutral-100 transition-colors shrink-0">
+              link →
+            </a>
+          </div>
+          <p class="mt-1 text-neutral-300 text-[14.5px]">{p.detail}</p>
+        </li>
+      ))}
+    </ul>
+  </section>
+
+  <section class="mb-12">
+    <h2 class="mb-6 text-xs font-medium uppercase tracking-[0.18em] text-neutral-500">Education</h2>
+    <div class="flex flex-wrap items-baseline justify-between gap-x-4">
+      <div>
+        <h3 class="text-base font-medium text-neutral-100">B.E. Computer Engineering</h3>
+        <p class="text-sm text-neutral-500">University of Mumbai (Bharati Vidyapeeth CoE) · CGPA 9.1 / 10</p>
+      </div>
+      <p class="text-sm tabular-nums text-neutral-500 whitespace-nowrap">Jan 2020 — Jun 2024</p>
+    </div>
+  </section>
+
+  <section>
+    <h2 class="mb-6 text-xs font-medium uppercase tracking-[0.18em] text-neutral-500">Recognition</h2>
+    <ul class="space-y-1.5 text-neutral-300 text-[14.5px]">
+      {awards.map((a) => (
+        <li class="relative pl-5 before:absolute before:left-0 before:top-[0.65em] before:h-px before:w-3 before:bg-neutral-700">
+          {a}
+        </li>
+      ))}
+    </ul>
+  </section>
+</Base>

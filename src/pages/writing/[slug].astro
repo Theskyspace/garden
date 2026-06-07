@@ -1,0 +1,70 @@
+---
+import { getCollection, render } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import MaturityBadge from '../../components/MaturityBadge.astro';
+import { formatDate } from '../../lib/format';
+
+export async function getStaticPaths() {
+  const notes = await getCollection('writing', ({ data }) => !data.draft);
+  return notes.map((n) => ({ params: { slug: n.id }, props: { note: n } }));
+}
+
+const { note } = Astro.props;
+const { Content } = await render(note);
+---
+
+<Base title={`${note.data.title} — Akash Joshi`} description={note.data.description}>
+  <article>
+    <header class="mb-10 pb-8 border-b border-neutral-900">
+      <div class="mb-4 flex flex-wrap items-center gap-x-4 gap-y-2">
+        <MaturityBadge maturity={note.data.maturity} size="md" />
+        {note.data.topics.map((t) => (
+          <a href={`/writing#${t}`} class="text-[10.5px] uppercase tracking-[0.16em] text-neutral-500 hover:text-neutral-200 transition-colors">#{t}</a>
+        ))}
+      </div>
+      <h1 class="text-3xl md:text-[34px] font-medium tracking-tight text-neutral-100 leading-[1.15]">
+        {note.data.title}
+      </h1>
+      <p class="mt-4 text-neutral-400 max-w-prose">{note.data.description}</p>
+      <dl class="mt-6 flex flex-wrap gap-x-6 gap-y-1 text-xs text-neutral-500">
+        <div class="flex gap-2"><dt class="text-neutral-600 uppercase tracking-[0.16em]">Planted</dt><dd class="tabular-nums">{formatDate(note.data.created)}</dd></div>
+        <div class="flex gap-2"><dt class="text-neutral-600 uppercase tracking-[0.16em]">Last tended</dt><dd class="tabular-nums">{formatDate(note.data.tended)}</dd></div>
+      </dl>
+    </header>
+
+    <div class="prose-note">
+      <Content />
+    </div>
+
+    <footer class="mt-16 pt-8 border-t border-neutral-900 flex flex-wrap items-center justify-between gap-3 text-sm">
+      <a href="/writing" class="text-neutral-500 hover:text-neutral-200 transition-colors">← back to writing</a>
+      <span class="text-xs text-neutral-600">
+        Notice an error or want to argue? <a href="mailto:theskyspacedev@gmail.com" class="underline decoration-neutral-700 hover:decoration-neutral-300 transition">theskyspacedev@gmail.com</a>
+      </span>
+    </footer>
+  </article>
+</Base>
+
+<style is:global>
+  .prose-note { color: rgb(212 212 212); font-size: 16px; line-height: 1.75; }
+  .prose-note > * + * { margin-top: 1.1em; }
+  .prose-note h2 { font-size: 18px; font-weight: 500; color: rgb(245 245 245); margin-top: 2.2em; margin-bottom: 0.4em; letter-spacing: -0.005em; }
+  .prose-note h3 { font-size: 15.5px; font-weight: 500; color: rgb(229 229 229); margin-top: 1.6em; margin-bottom: 0.2em; }
+  .prose-note p { color: rgb(212 212 212); }
+  .prose-note a { color: rgb(245 245 245); text-decoration: underline; text-decoration-color: rgb(64 64 64); text-underline-offset: 3px; transition: text-decoration-color 0.15s; }
+  .prose-note a:hover { text-decoration-color: rgb(245 245 245); }
+  .prose-note strong { color: rgb(245 245 245); font-weight: 500; }
+  .prose-note em { color: rgb(229 229 229); font-style: italic; }
+  .prose-note ul, .prose-note ol { padding-left: 1.4em; }
+  .prose-note ul li { list-style: none; position: relative; padding-left: 1.1em; }
+  .prose-note ul li::before { content: ''; position: absolute; left: 0; top: 0.85em; height: 1px; width: 0.6em; background: rgb(82 82 82); }
+  .prose-note ul li + li, .prose-note ol li + li { margin-top: 0.3em; }
+  .prose-note ol li { list-style: decimal; color: rgb(212 212 212); }
+  .prose-note ol li::marker { color: rgb(115 115 115); }
+  .prose-note blockquote { border-left: 2px solid rgb(64 64 64); padding-left: 1.1em; color: rgb(212 212 212); font-style: normal; }
+  .prose-note blockquote strong { color: rgb(250 250 250); }
+  .prose-note code { background: rgb(23 23 23); color: rgb(229 229 229); padding: 0.1em 0.4em; border-radius: 4px; font-size: 0.88em; font-family: var(--font-mono); }
+  .prose-note pre { background: rgb(10 10 10); border: 1px solid rgb(23 23 23); border-radius: 6px; padding: 1em 1.1em; overflow-x: auto; font-size: 13px; line-height: 1.6; }
+  .prose-note pre code { background: transparent; padding: 0; }
+  .prose-note hr { border: none; border-top: 1px solid rgb(23 23 23); margin: 2.2em 0; }
+</style>

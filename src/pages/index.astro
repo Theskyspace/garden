@@ -1,0 +1,49 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../layouts/Base.astro';
+import { formatDate } from '../lib/format';
+
+const HOME_LIMIT = 5;
+
+const all = (await getCollection('writing', ({ data }) => !data.draft)).sort(
+  (a, b) => b.data.tended.getTime() - a.data.tended.getTime()
+);
+const featured = all.filter((n) => n.data.featured);
+const rest = all.filter((n) => !n.data.featured);
+const notes = [...featured, ...rest].slice(0, HOME_LIMIT);
+---
+
+<Base>
+  <header class="mb-12">
+    <h1 class="text-3xl md:text-[34px] font-medium tracking-tight text-neutral-100 leading-[1.2]">
+      Akash Joshi
+    </h1>
+    <p class="mt-4 max-w-prose text-neutral-300">
+      I&rsquo;m a founding engineer based in Mumbai. Currently at
+      <a href="https://equal.in" class="text-neutral-100 underline decoration-neutral-700 hover:decoration-neutral-100 transition">Equal Identity</a>,
+      working inside India&rsquo;s RBI-regulated Account Aggregator framework.
+      Previously a founding engineer at two fintech startups. I write about fintech
+      infrastructure, AI in product, and operating under ambiguity.
+    </p>
+  </header>
+
+  <section aria-labelledby="writing">
+    <h2 id="writing" class="mb-6 text-xs font-medium uppercase tracking-[0.18em] text-neutral-500">
+      Writing
+    </h2>
+    <ul class="space-y-1">
+      {notes.map((n) => (
+        <li>
+          <a
+            href={`/writing/${n.id}`}
+            class="group flex items-baseline justify-between gap-4 py-1.5 border-b border-neutral-900/60 hover:border-neutral-700 transition-colors"
+          >
+            <span class="text-neutral-200 group-hover:text-white transition-colors">{n.data.title}</span>
+            <span class="text-xs tabular-nums text-neutral-600 whitespace-nowrap">{formatDate(n.data.tended, { mode: 'short' })}</span>
+          </a>
+        </li>
+      ))}
+    </ul>
+    <a href="/writing" class="mt-5 inline-block text-sm text-neutral-500 hover:text-neutral-200 transition-colors">all writing →</a>
+  </section>
+</Base>
