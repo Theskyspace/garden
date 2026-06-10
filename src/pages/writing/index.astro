@@ -2,7 +2,7 @@
 import { getCollection } from 'astro:content';
 import Base from '../../layouts/Base.astro';
 import MaturityBadge from '../../components/MaturityBadge.astro';
-import { formatDate, relativeFromNow } from '../../lib/format';
+import { formatDate, relativeFromNow, url } from '../../lib/format';
 
 const notes = (await getCollection('writing', ({ data }) => !data.draft)).sort(
   (a, b) => b.data.tended.getTime() - a.data.tended.getTime()
@@ -70,7 +70,7 @@ const counts = {
         data-maturity={n.data.maturity}
         data-topics={n.data.topics.join(',')}
       >
-        <a href={`/writing/${n.id}`} class="group block py-5 -mx-2 px-2 rounded transition-colors hover:bg-neutral-900/40">
+        <a href={url(`/writing/${n.id}`)} class="group block py-5 -mx-2 px-2 rounded transition-colors hover:bg-neutral-900/40">
           <div class="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
             <h2 class="text-[16px] text-neutral-100 group-hover:text-white">{n.data.title}</h2>
             <span class="text-xs tabular-nums text-neutral-500 whitespace-nowrap">

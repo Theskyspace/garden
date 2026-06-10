@@ -1,3 +1,9 @@
+export function url(path: string = '/'): string {
+  const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+  const normalized = path.startsWith('/') ? path : '/' + path;
+  return base + normalized;
+}
+
 export function formatDate(d: Date | string, opts: { mode?: 'long' | 'short' | 'iso' } = {}) {
   const date = typeof d === 'string' ? new Date(d) : d;
   if (opts.mode === 'iso') return date.toISOString().slice(0, 10);

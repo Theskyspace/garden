@@ -1,5 +1,6 @@
 ---
 import Base from '../layouts/Base.astro';
+import { url } from '../lib/format';
 
 const principles = [
   { title: 'Operate in ambiguity.', body: "Most briefs are a Slack message. I'll write the API, sketch the doc, and ship a flag-gated version before asking for a clarification meeting." },
@@ -32,7 +33,7 @@ const principles = [
       (lending, INR 20M disbursed in the first ten days) and SayF / Wealides Fintech
       (cashback + digital gold, 120K users, INR 1B+ TPV, Titan-Capital backed). The
       headline number — <em>0 → 1M transactions</em> — is real; the
-      <a href="/writing/zero-to-one-million-transactions" class="text-neutral-100 underline decoration-neutral-700 hover:decoration-neutral-100 transition">long version with the regrets</a>
+      <a href={url('/writing/zero-to-one-million-transactions')} class="text-neutral-100 underline decoration-neutral-700 hover:decoration-neutral-100 transition">long version with the regrets</a>
       is on the writing side of this site.
     </p>
     <p>

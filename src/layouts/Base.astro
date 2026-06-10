@@ -1,18 +1,6 @@
 ---
 import '../styles/global.css';
-
-interface Props {
-  title?: string;
-  description?: string;
-}
-
-const {
-  title = 'Akash Joshi — Founding Engineer',
-  description = 'Founding engineer building AI products. Currently at Equal Identity in India\'s Account Aggregator framework.',
-} = Astro.props;
-
-const path = Astro.url.pathname;
-const isActive = (p: string) => path === p || (p !== '/' && path.startsWith(p));
+import { url } from '../lib/format';
 
 interface Props {
   title?: string;
@@ -20,7 +8,19 @@ interface Props {
   wide?: boolean;
 }
 
-const { wide = false } = Astro.props;
+const {
+  title = 'Akash Joshi — developer, occasional writer, who overthinks in public',
+  description = 'Personal site of Akash Joshi — developer at Equal, fintech, identity, AI in the voice segment. Writing about fintech infra, AI in product, and operating under ambiguity.',
+  wide = false,
+} = Astro.props;
+
+const path = Astro.url.pathname.replace(/\/$/, '');
+const home = url('/').replace(/\/$/, '');
+const isActive = (p: string) => {
+  const full = url(p).replace(/\/$/, '');
+  if (p === '/') return path === home;
+  return path === full || path.startsWith(full + '/');
+};
 
 const navLinks = [
   { href: '/writing', label: 'writing' },
@@ -42,22 +42,22 @@ const navLinks = [
     <meta property="og:type" content="website" />
     <meta name="theme-color" content="#0a0a0a" />
     <title>{title}</title>
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/svg+xml" href={url('/favicon.svg')} />
   </head>
   <body class="bg-neutral-950 font-sans antialiased text-[15px] leading-7 text-neutral-300 selection:bg-neutral-100 selection:text-neutral-900">
     <div class={`mx-auto px-6 py-10 md:py-16 ${wide ? 'max-w-3xl' : 'max-w-2xl'}`}>
       <nav class="mb-14 flex items-center justify-between text-sm text-neutral-400">
         <a
-          href="/"
+          href={url('/')}
           class="font-medium text-neutral-100 hover:text-neutral-400 transition-colors"
-          aria-current={isActive('/') && path === '/' ? 'page' : undefined}
+          aria-current={isActive('/') ? 'page' : undefined}
         >
           akash joshi
         </a>
         <div class="flex items-center gap-5">
           {navLinks.map((l) => (
             <a
-              href={l.href}
+              href={url(l.href)}
               class={`transition-colors ${isActive(l.href) ? 'text-neutral-100' : 'hover:text-neutral-100'}`}
               aria-current={isActive(l.href) ? 'page' : undefined}
             >
@@ -73,7 +73,7 @@ const navLinks = [
           <a href="https://github.com/theskyspace" class="hover:text-neutral-200 transition-colors">github</a>
           <a href="https://linkedin.com/in/theskyspace" class="hover:text-neutral-200 transition-colors">linkedin</a>
           <a href="mailto:theskyspacedev@gmail.com" class="hover:text-neutral-200 transition-colors">theskyspacedev@gmail.com</a>
-          <a href="/resume" class="hover:text-neutral-200 transition-colors">resume</a>
+          <a href={url('/resume')} class="hover:text-neutral-200 transition-colors">resume</a>
         </span>
       </footer>
     </div>

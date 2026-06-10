@@ -2,7 +2,7 @@
 import { getCollection, render } from 'astro:content';
 import Base from '../../layouts/Base.astro';
 import MaturityBadge from '../../components/MaturityBadge.astro';
-import { formatDate } from '../../lib/format';
+import { formatDate, url } from '../../lib/format';
 
 export async function getStaticPaths() {
   const notes = await getCollection('writing', ({ data }) => !data.draft);
@@ -19,7 +19,7 @@ const { Content } = await render(note);
       <div class="mb-4 flex flex-wrap items-center gap-x-4 gap-y-2">
         <MaturityBadge maturity={note.data.maturity} size="md" />
         {note.data.topics.map((t) => (
-          <a href={`/writing#${t}`} class="text-[10.5px] uppercase tracking-[0.16em] text-neutral-500 hover:text-neutral-200 transition-colors">#{t}</a>
+          <a href={`${url('/writing')}#${t}`} class="text-[10.5px] uppercase tracking-[0.16em] text-neutral-500 hover:text-neutral-200 transition-colors">#{t}</a>
         ))}
       </div>
       <h1 class="text-3xl md:text-[34px] font-medium tracking-tight text-neutral-100 leading-[1.15]">
@@ -37,7 +37,7 @@ const { Content } = await render(note);
     </div>
 
     <footer class="mt-16 pt-8 border-t border-neutral-900 flex flex-wrap items-center justify-between gap-3 text-sm">
-      <a href="/writing" class="text-neutral-500 hover:text-neutral-200 transition-colors">← back to writing</a>
+      <a href={url('/writing')} class="text-neutral-500 hover:text-neutral-200 transition-colors">← back to writing</a>
       <span class="text-xs text-neutral-600">
         Notice an error or want to argue? <a href="mailto:theskyspacedev@gmail.com" class="underline decoration-neutral-700 hover:decoration-neutral-300 transition">theskyspacedev@gmail.com</a>
       </span>
