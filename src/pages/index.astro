@@ -16,20 +16,23 @@ const notes = [...featured, ...rest].slice(0, HOME_LIMIT);
 <Base>
   <header class="mb-12">
     <h1 class="text-3xl md:text-[34px] font-medium tracking-tight text-neutral-100 leading-[1.2]">
-      Akash Joshi
+      Hi, I&rsquo;m Akash.
     </h1>
+    <p class="mt-5 max-w-prose text-neutral-300">
+      I&rsquo;m a developer, occasional writer, who overthinks in public. I work at
+      <a href="https://equal.in" class="text-neutral-100 underline decoration-neutral-700 hover:decoration-neutral-100 transition">Equal</a>
+      — building fintech, identity, and AI products in the voice segment. Before this I was
+      a founding engineer in two different startups. Six years coding, and my life&rsquo;s work is making
+      products that quietly add convenience to ordinary days.
+    </p>
     <p class="mt-4 max-w-prose text-neutral-300">
-      I&rsquo;m a founding engineer based in Mumbai. Currently at
-      <a href="https://equal.in" class="text-neutral-100 underline decoration-neutral-700 hover:decoration-neutral-100 transition">Equal Identity</a>,
-      working inside India&rsquo;s RBI-regulated Account Aggregator framework.
-      Previously a founding engineer at two fintech startups. I write about fintech
-      infrastructure, AI in product, and operating under ambiguity.
+      I&rsquo;m a music head. I lift metal, surf, travel, and learn new things whenever I can.
     </p>
   </header>
 
-  <section aria-labelledby="writing">
-    <h2 id="writing" class="mb-6 text-xs font-medium uppercase tracking-[0.18em] text-neutral-500">
-      Writing
+  <section aria-labelledby="favourites">
+    <h2 id="favourites" class="mb-6 text-xs font-medium uppercase tracking-[0.18em] text-neutral-500">
+      Favourites
     </h2>
     <ul class="space-y-1">
       {notes.map((n) => (
