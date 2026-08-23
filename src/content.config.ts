@@ -8,6 +8,8 @@ const TOPICS = [
   'ai-in-product',
   'operating-notes',
   'meta',
+  'flowstate',
+  'build-in-public',
 ] as const;
 
 const writing = defineCollection({
