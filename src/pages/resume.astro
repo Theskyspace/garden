@@ -1,5 +1,6 @@
 ---
 import Base from '../layouts/Base.astro';
+import { url } from '../lib/format';
 
 const experience = [
   {
@@ -73,6 +74,13 @@ const awards = [
           <a href="https://github.com/theskyspace" class="underline decoration-neutral-700 hover:decoration-neutral-100 transition">github</a>
         </p>
       </div>
+      <a
+        href={url('/Akash-Joshi-Resume.pdf')}
+        download="Akash Joshi Resume.pdf"
+        class="shrink-0 text-xs uppercase tracking-[0.14em] border border-neutral-800 text-neutral-400 hover:text-neutral-100 hover:border-neutral-600 rounded-full px-4 py-1.5 transition-colors"
+      >
+        download pdf ↓
+      </a>
     </div>
   </header>
 
