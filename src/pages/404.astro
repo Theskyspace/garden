@@ -1,0 +1,20 @@
+---
+import Base from '../layouts/Base.astro';
+import { url } from '../lib/format';
+---
+
+<Base title="404 — Akash Joshi" description="This page doesn't exist.">
+  <header class="mb-10">
+    <h1 class="text-3xl md:text-[34px] font-medium tracking-tight text-neutral-100 leading-[1.2]">
+      Nothing planted here.
+    </h1>
+    <p class="mt-5 max-w-prose text-neutral-400">
+      This page doesn&rsquo;t exist — either the link is old or the note got composted.
+    </p>
+  </header>
+  <p class="text-sm">
+    <a href={url('/')} class="text-neutral-500 hover:text-neutral-200 transition-colors">← back home</a>
+    <span class="mx-2 text-neutral-800">·</span>
+    <a href={url('/writing')} class="text-neutral-500 hover:text-neutral-200 transition-colors">browse the garden</a>
+  </p>
+</Base>

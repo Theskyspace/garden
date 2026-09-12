@@ -17,7 +17,7 @@ export function formatDate(d: Date | string, opts: { mode?: 'long' | 'short' | '
   });
 }
 
-export function relativeFromNow(d: Date | string, now: Date = new Date('2026-06-07')) {
+export function relativeFromNow(d: Date | string, now: Date = new Date()) {
   const date = typeof d === 'string' ? new Date(d) : d;
   const days = Math.round((now.getTime() - date.getTime()) / (1000 * 60 * 60 * 24));
   if (days < 1) return 'today';

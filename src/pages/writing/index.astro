@@ -131,5 +131,12 @@ const counts = {
         apply();
       });
     });
+    const applyHash = () => {
+      const t = decodeURIComponent(location.hash.slice(1));
+      const btn = bar.querySelector<HTMLButtonElement>(`[data-filter-topic="${CSS.escape(t)}"]`);
+      if (btn) btn.click();
+    };
+    applyHash();
+    window.addEventListener('hashchange', applyHash);
   }
 </script>
