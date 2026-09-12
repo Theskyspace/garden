@@ -16,7 +16,8 @@ I designed the flagship lending gateway as a 3-API BFF — small enough that any
 frontend team could integrate in a day, modular enough that we could swap underwriting
 rules without touching the surface. The rule engine itself sat on **Django + Gorules
 (Rust)** for ROI, loan-amount and parameter logic; the Rust core gave us deterministic
-evaluation and Python gave us the iteration speed founders need.
+evaluation in under 50ms without redeploys, and Python gave us the iteration speed
+founders need.
 
 The infrastructure I'm most quietly proud of is an **internal CLI** that cut feature
 delivery time by 45%. Nobody asked for it. It was a Friday-afternoon thing that became

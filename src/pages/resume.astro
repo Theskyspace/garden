@@ -3,75 +3,57 @@ import Base from '../layouts/Base.astro';
 
 const experience = [
   {
-    company: 'Equal Identity',
+    company: 'Equal Identity (MoneyOne)',
     sub: 'Software Engineer · RBI Account Aggregator framework · Hyderabad',
     period: 'Dec 2024 — Present',
     bullets: [
-      'Built Nexus — the platform\'s first multi-tenant queue-based notification router; eliminated cascading notification drops and the transaction-failure incidents they caused.',
-      'Shipped the team\'s first production Go service: a workflow engine for bulk record processing. Critical-path; projected INR 200–300M revenue at 10–15% market penetration.',
-      'Built Multi-CR Support and executed a live TSP migration end-to-end for a major brokerage — zero rollbacks, INR 48M+ ARR realised and counting; migration rails reusable for future enterprise switches.',
-      'Designed Customer Protect: cut consent-failure rates >20% across 5+ enterprise clients; adopted as mandatory across the platform.',
-      'Self-initiated full-stack Internal Dashboard now used daily by the team; reduced support resolution from hours of engineering back-and-forth to minutes of self-service.',
-      'Built API-level Real-time Metrics from zero — now the baseline view during incidents and capacity discussions.',
-      'Authored auditable FI Data Purge crons under AA framework retention policy — ~3 TB of storage saved, demonstrable compliance.',
-      'Currently building an internal agent-evaluation platform (scenarios, persona replay, LLM-judge tuning) to support deterministic rollout of an AI call-assistant product.',
-      'Two Monthly Demo Awards (Bulk Pipeline Testing Framework, DFM/TSP Router); supported 15+ enterprise clients across production + UAT.',
+      'Built a company-wide agent harness on Claude (Schedules, Agents, Skills) serving engineering, sales, growth, and product: grounded in company and codebase context, debugging tools wired in, reachable from Slack and Jira, human-gated before writes; ~300 runs/week, 87% adoption org-wide, 90% of support threads triaged.',
+      'Shipped the Bulk Orchestration System, a Go workflow engine on the critical path for bulk operations at ~2M records/day, where new business flows compose from shared steps without new service code; INR 200–300M projected at 10–15% market penetration.',
+      'Built Nexus, a queue-based notification router and the platform\'s first multi-tenant layer; scaled from launch to ~18M FI notifications/month with zero drops, ending transaction drop-offs caused by missed deliveries.',
+      'Spearheaded Customer Protect, automated detection-and-correction of malformed Account Aggregator consent templates; ~100 upstream fixes/month guard 25–30M downstream consent requests, cut consent failures >20%, and went mandatory for every enterprise customer on the platform.',
+      'Architected Multi CR Support + migration pipeline to unlock client-switches from incumbent TSPs; ported 2M in-flight consents for a top Indian discount broker with zero rollbacks, moving INR 4M MRR.',
+      'Built API-level observability from zero; carried 4 on-call rotations, resolved 8 highest-priority incidents, and mentored an intern to production release.',
     ],
   },
   {
-    company: 'Yelow Autofin (Yelow Payments Pvt Ltd)',
+    company: 'Yelow Payments Private Limited',
     sub: 'Founding Engineer · Lending fintech · Remote',
     period: 'May 2024 — Nov 2024',
     bullets: [
-      'Designed the flagship lending gateway as a 3-API BFF surface — modular workflows, frontend-friendly contracts.',
-      'Engineered a Django + Gorules (Rust) business rule engine for ROI, loan amounts and underwriting parameters — INR 20M disbursed in the first 10 days post-launch.',
-      'Shipped an internal CLI that cut feature delivery time by 45%.',
-      'Automated sanction-letter and loan-agreement pipelines end-to-end.',
+      'Engineered a business rule engine (DRF + Rust-based Gorules) evaluating underwriting policy in <50ms without redeploys; disbursed INR 20M in loans within 10 days of launch.',
+      'Designed a configurable workflow + BFF system as the flagship lending gateway; added new lender journeys via configuration, not code, behind a uniform consumer surface.',
     ],
   },
   {
-    company: 'Wealides Fintech (SayF)',
-    sub: 'Founding Engineer · Cashback / digital-gold consumer app · Titan Capital-backed · Remote',
+    company: 'SayF (Wealides Fintech Pvt Ltd)',
+    sub: 'Founding Engineer · Cashback / digital-gold consumer app · Titan Capital-backed · Remote (Bangalore-based)',
     period: 'Oct 2021 — May 2024',
     bullets: [
-      'Built the backend API infrastructure from scratch — Django + NestJS — supporting both the B2C consumer app and B2B brand-partner integrations (200+ partners).',
-      'Scaled to 120K users and INR 1B+ in transaction value on AWS (ECS, S3, RDS, PostgreSQL); high availability, optimal performance, data integrity.',
-      'Implemented CI/CD on Jenkins + Docker + Makefiles — automated build, test and deploy pipelines for faster, more reliable releases.',
-      'Programmatic automation for design & marketing — 90% reduction in manual intervention.',
+      'Built the consumer-rewards backend from scratch (DRF + NestJS) for a Titan-Capital-backed B2C savings app, owning the digital gold wallet, Auto-Save engine, and Smart Referral system.',
+      'Scaled its 200+ brand affiliate engine to 120K users and INR 1B+ transaction value, holding ~3K req/min peak on AWS ECS, RDS + PostgreSQL.',
     ],
   },
 ];
 
 const projects = [
   {
-    name: 'Flowstate — fully-local voice layer for the Mac',
-    detail: 'On-device Parakeet on the Neural Engine, native Swift, first word in under a second — nothing ever leaves the machine. Not a dictation app but a voice layer: dictation, voice-invoked workflows, and transform ("refine it professionally"). One-time price, built solo and in public. Launch planned for September.',
-    href: 'https://garden.crackedbuilder.com/writing/why-im-building-flowstate',
-  },
-  {
-    name: 'CurioQuest — AI Q&A with real-time contextual search',
-    detail: 'RAG-style platform combining Bing Search for live context with Cohere AI for source-cited responses. Next.js front-end with focus on minimalist UI and dynamic interactions.',
-    href: 'https://github.com/Theskyspace/curioquest.ai',
-  },
-  {
-    name: 'NDA NA abhyas — Android exam-prep app',
-    detail: 'Built and shipped to Play Store in 14 days, starting from zero Android Studio knowledge. Self-imposed deadline; personal-mission proof point.',
-    href: '#',
+    name: 'Flowstate — on-device macOS dictation app',
+    detail: 'Real-time on-device speech-to-text (no cloud, no audio leaves the machine) using NVIDIA Parakeet TDT and OpenAI Whisper in CoreML with Silero VAD, daemon-streamed so transcription overlaps speech — ~200–350ms from speech to fully punctuated text. Fidelity-preserving formatting (local LLM only for list boundaries, every item verified as a verbatim substring), fix-in-place editing via the Accessibility API; one command ships a signed Sparkle appcast with binary delta updates, DMG, and Homebrew cask.',
+    href: 'https://flowstate.crackedbuilder.com',
   },
 ];
 
 const skills = [
-  { label: 'Languages', items: 'Go · TypeScript · Python · SQL · Dart · C++' },
-  { label: 'Frameworks', items: 'Django · NestJS · Flutter · Next.js · Flask' },
-  { label: 'Infra', items: 'AWS (ECS, S3, RDS, Athena) · Docker · Jenkins · GitHub Actions · Makefiles' },
-  { label: 'Data', items: 'PostgreSQL · Redis · message queues' },
-  { label: 'Domain', items: 'RBI Account Aggregator framework · BFF architecture · rules engines · multi-tenant systems · observability' },
+  { label: 'Languages', items: 'Go · Python · TypeScript · Swift · SQL' },
+  { label: 'AI & Agents', items: 'Agent orchestration (tool use, retrieval, human-in-the-loop gating) · evals · Anthropic + OpenAI SDKs · on-device ML (CoreML)' },
+  { label: 'Backend', items: 'Django + DRF · NestJS · Next.js / React · REST + BFF patterns · queue-based async processing · multi-tenancy' },
+  { label: 'Infra & Data', items: 'AWS (ECS, S3, RDS, Athena) · Docker · Jenkins · GitHub Actions · PostgreSQL · Redis · observability instrumentation' },
 ];
 
 const awards = [
-  'Smart India Hackathon 2022 — Winner (DRDO problem statement; felicitated by the Vice President of India).',
-  'UNESCO–India–Africa Hackathon 2022 — Winner.',
-  'Free Your Data Hackathon 2021 — Finalist.',
+  'Monthly Demo Award (×2) — Equal / MoneyOne.',
+  'Smart India Hackathon 2022 — Winner, Team Lead (DRDO problem statement; felicitated by the Vice President of India).',
+  'UNESCO India–Africa Hackathon 2022 — Winner.',
 ];
 ---
 
@@ -80,7 +62,7 @@ const awards = [
     <div class="flex flex-wrap items-start justify-between gap-4">
       <div>
         <h1 class="text-2xl font-medium tracking-tight text-neutral-100">Akash Joshi</h1>
-        <p class="mt-1 text-neutral-400">Founding engineer · fintech infrastructure · AI products</p>
+        <p class="mt-1 text-neutral-400">2x Founding Engineer · builds regulated fintech infrastructure and the AI tooling that operates it</p>
         <p class="mt-3 text-sm text-neutral-500">India · open to remote</p>
         <p class="mt-3 text-sm text-neutral-400">
           Best way to reach me:
@@ -154,9 +136,9 @@ const awards = [
     <div class="flex flex-wrap items-baseline justify-between gap-x-4">
       <div>
         <h3 class="text-base font-medium text-neutral-100">B.E. Computer Engineering</h3>
-        <p class="text-sm text-neutral-500">University of Mumbai (Bharati Vidyapeeth CoE) · CGPA 9.1 / 10</p>
+        <p class="text-sm text-neutral-500">Bharati Vidyapeeth College of Engineering (University of Mumbai) · CGPA 9.1 / 10</p>
       </div>
-      <p class="text-sm tabular-nums text-neutral-500 whitespace-nowrap">Jan 2020 — Jun 2024</p>
+      <p class="text-sm tabular-nums text-neutral-500 whitespace-nowrap">Jun 2020 — Jun 2024</p>
     </div>
   </section>
 

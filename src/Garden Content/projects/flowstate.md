@@ -1,8 +1,8 @@
 ---
 name: "Flowstate"
 blurb: "A fully-local voice layer for the Mac — on-device Parakeet on the Neural Engine, native Swift, first word in under a second. Nothing ever leaves the machine. Built solo, in public."
-href: "/writing/why-im-building-flowstate"
-label: "read the build"
+href: "https://flowstate.crackedbuilder.com"
+label: "site"
 year: 2026
 order: 0
 ---
@@ -17,5 +17,6 @@ on the Neural Engine, no account, no server that ever hears you, and a one-time 
 instead of monthly rent for software running on your own silicon.
 
 The whole thing is being built in the open — the bugs, the design traps, the 2 AM tester
-calls. See [why I'm building it](/writing/why-im-building-flowstate) and the living
-[changelog](/writing/flowstate-changelog). Launch planned for September; waitlist open.
+calls. See [flowstate.crackedbuilder.com](https://flowstate.crackedbuilder.com),
+[why I'm building it](/writing/why-im-building-flowstate), and the living
+[changelog](/writing/flowstate-changelog).
